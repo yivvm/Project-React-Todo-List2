@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import './App.css'
-import NewTodoForm from './NewTodoForm'
-import TodoList from './TodoList'
+import NewTodoForm from './components/NewTodoForm'
+import TodoList from './components/TodoList'
+import EditTodoForm from './components/EditTodoForm'
 
 function App() {
   const [todos, setTodos] = useState(() => {
@@ -19,48 +19,60 @@ function App() {
     setTodos((currentTodos) => {
       return (
         [
-          { id: crypto.randomUUID(), title, completed: false},
+          { id: crypto.randomUUID(), title, completed: false, isEditing: false},
           ...currentTodos,
         ]
       )
     })
   }
 
-  function toggleTodo(id, completed) {
+  function toggleTodo(id) {
     setTodos(currentTodos => {
       return currentTodos.map((todo) => {
         if (todo.id === id) {
-          return { ...todo, completed } 
+          return { ...todo, completed: !todo.completed } 
+        } else {
+          return todo
         }
-
-        return todo
       })
     })
   }
-
-  function editTodo(id, newTitle) {
-    setTodos(currentTodos => {
-      return currentTodos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, title: newTitle}
-        }
-
-      return todo
-      })
-    })
-  }
-
+  
   function deleteTodo(id) {
     setTodos(currentTodos => {
       return currentTodos.filter(todo => todo.id !== id)
     })
   }
 
+  function editTodo(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isEditing: !todo.isEditing }
+        } else {
+          return todo
+        }
+      })
+    )
+  }
+
+  function editTask(id, title) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, title, isEditing: !todo.isEditing}
+        } else {
+          return todo
+        }
+      })
+    )
+  }
+
   return (
-    <div>
+    <div className='App'>
       <h1 className='header'>Create Todo List</h1>
       <NewTodoForm onSubmit={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} editTodo={editTodo} deleteTodo={deleteTodo}/>
+      <TodoList todos={todos} toggleTodo={toggleTodo} editTodo={editTodo} editTask={editTask} deleteTodo={deleteTodo}/>
     </div>
   )
 }

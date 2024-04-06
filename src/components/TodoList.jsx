@@ -1,10 +1,19 @@
 import TodoItem from "./TodoItem"
+import EditTodoForm from "./EditTodoForm"
 
-export default function TodoList({ todos, toggleTodo, editTodo, deleteTodo}) {
+export default function TodoList({ todos, toggleTodo, editTodo, editTask, deleteTodo}) {
   return (
     <ul className="list">
         {todos.length === 0 && "No Todos"}
         {todos.map((todo) => (
+          todo.isEditing ? (
+            <EditTodoForm
+              key={todo.id}
+              title={todo.title}
+              id={todo.id}
+              editTodo={editTask}
+            />
+          ) : (
             <li key={todo.id}>
                 <TodoItem
                     {...todo}
@@ -15,7 +24,7 @@ export default function TodoList({ todos, toggleTodo, editTodo, deleteTodo}) {
                 />
             </li>
             )
-        )}
+        ))}
     </ul>
   )
 }

@@ -1,44 +1,74 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  margin: 0 auto;
   display: flex;
   /* place-items: center; */
-  /* max-width: 400px; */
   min-height: 100vh;
-  padding: 1rem;
+  padding: 2rem;
+  background: #040140;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 h1 {
   font-size: 2em;
+  color: #fff;
+  margin-bottom: 1rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.25em 0.5em;
-  font-size: 1em;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.new-item-form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.new-item-input {
   outline: none;
+  background: white;
+  padding: 0.5rem 1rem;
+  /* border-radius: 0.25rem; */
+  border: 1px solid white;
+  width: 300px;
+  color: #040140;
+  font-size: 1rem;
 }
+
+.todo-btn {
+  background: #040140;
+  color: hsl(226, 100%, 90%);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid white;
+}
+
 button:hover {
-  border-color: darkgray;
+  color: white;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.new-item-form {
+.todo {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem
+  justify-content: space-between;
+  align-items: center;
+  background: #040140;
+  color: white;
+  padding: 0.75rem 1rem;
+  border: 1px solid white;
+  font-size: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 ul {
@@ -46,78 +76,76 @@ ul {
 }
 
 .list {
+  width: 100%;
   margin: 0;
   padding: 0;
-  margin-left: 1rem;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
 }
 
-.list li {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+.list li:has(input:checked) label {
+  color: hsl(226, 20%, 60%)
 }
 
 .list li label {
-    display: flex;
-    gap: 0.25rem;
-    cursor: pointer;
-    align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+  align-items: center;
 }
 
 .list li:has(input:focus-visible) label {
-    outline: 1px solid hsl(200, 100%, 50%);
+  outline: 1px solid hsl(226, 100%, 50%);
 }
 
 .list li input {
-    outline: none;
-    width: 0;
-    height: 0;
-    appearance: none;
-    pointer-events: none;
-    position: absolute;
+  outline: none;
+  width: 0;
+  height: 0;
+  appearance: none;
+  pointer-events: none;
+  position: absolute;
 }
 
 .list li label::before {
-    content: "";
-    display: block;
-    width: 0.9rem;
-    height: 0.9rem;
-    background: rgb(199, 198, 198);
-    border-radius: 0.25em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  content: "";
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: hsl(226, 100%, 90%);
+  border-radius: 0.1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .list li label:hover::before {
-    background: lightgrey;
+  background: hsl(226, 100%, 80%);
 }
 
 .list li:has(input:checked) label::before {
-    content: "✓";
-    background: darkgray;
-    color: rgb(37, 37, 37);
-    font-size: 0.75rem;
-    font-weight: bold;
+  content: "✓";
+  background: hsl(226, 100%, 40%);
+  color: hsl(226, 100%, 90%);
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .list li:has(input:checked) label:hover::before {
-    background: rgb(97, 96, 96);
+  background: hsl(235, 100%, 30%);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.btn-edit, .btn-delete {
+  background: #040140;
+  color: hsl(226, 100%, 90%);
+  border: none;
+  /* padding: 0.5rem; */
+  cursor: pointer;
+  font-size: 1rem;
+  padding-left: 1rem;
+  /* border: 1px solid white; */
+}
+
+.btn-delete:disabled {
+  color: grey;
+  cursor: not-allowed;
 }

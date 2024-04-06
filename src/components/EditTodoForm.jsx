@@ -1,16 +1,12 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
-export default function NewTodoForm( { onSubmit }) {
+export default function EditTodoForm( { editTodo, id, title }) {
     const [newItem, setNewItem] = useState("")
 
     function handleSubmit(e) {
         e.preventDefault()
-
-        if (newItem === "") return
-
-        onSubmit(newItem)
-
-        setNewItem("")
+        
+        editTodo(id, newItem)
     }
 
   return (
@@ -19,12 +15,12 @@ export default function NewTodoForm( { onSubmit }) {
       <div>
         <input 
             type="text" 
-            id="item" 
+            className="new-item-input" 
             value={newItem} 
             onChange={e => setNewItem(e.target.value)}
-            placeholder='Add task'
+            placeholder={title}
         />
-        <button className='btn'>Add</button>
+        <button type="submit" className='todo-btn'>Update</button>
       </div>
     </form>
   )
