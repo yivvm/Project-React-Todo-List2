@@ -10,14 +10,14 @@ This is a simple todo list application built using React. It allows users to add
 - Delete todo items: Users can delete todo items from the list. The "delete" button is disabled unless the todo is complete.
 - Local Storage: Todos are stored in the browser's local storage, so they persist even after the browser is refreshed.
 
-[!todolist](./src/images/todolist.png)
+![todolist](./src/images/todolist.png)
 
 ### Components
 
 ### App.jsx
 
 The main component of the application. It manages the state of todo items and renders other components such as NewTodoForm and TodoList. It provides functions to add, toggle, edit, and delete todos, and to manage state and local storage.
-[!delete](./src/images/delete.png)
+![delete](./src/images/delete.png)
 
 ### NewTodoForm.jsx
 
@@ -26,7 +26,7 @@ A component for adding new todo items. It provides a form for users to input new
 ### EditTodoForm.jsx
 
 A form component for editing existing todos. It consists of an input field populated with the current todo's title and a button to save the changes.
-[!edit](./src/images/edit.png)
+![edit](./src/images/edit.png)
 
 ### TodoList.jsx
 
