@@ -7,6 +7,10 @@ export default function EditTodoForm( { editTodo, id, title }) {
         e.preventDefault()
         
         editTodo(id, newItem)
+
+        if (newItem === "") {
+            editTodo(id, title)
+        }
     }
 
   return (
@@ -20,7 +24,7 @@ export default function EditTodoForm( { editTodo, id, title }) {
             onChange={e => setNewItem(e.target.value)}
             placeholder={title}
         />
-        <button type="submit" className='todo-btn'>Update</button>
+        <button type="submit" className='todo-btn'>Save</button>
       </div>
     </form>
   )
