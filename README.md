@@ -35,3 +35,8 @@ A list component that displays the todos. It maps over the todos array and rende
 ### TodoItem.jsx
 
 Represents a single todo item. Displays the todo title, a checkbox to mark it as completed, an edit button to edit the todo, and a delete button to delete the todo. The delete button is disabled if the todo is not completed.
+
+### AppReducer.jsx and the files in the components-reducer folder
+
+`AppReducer.jsx` is the main component of the application.  
+These files uses the useReducer hook to manage state and dispatch actions to update the state based on the defined reducer function. Manages the state of todos and provides functions to add, toggle, edit, and delete todos. Uses useState and useEffect hooks for managing state and local storage.
